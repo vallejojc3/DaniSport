@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas de Ropa Interior</title>
+    <link rel="stylesheet" href="zventas.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/imagenes/shoe.jpg" alt="Logo" class="logo">
+            <h1>Dani Sport - Ventas de Ropa Interior</h1>
+        </header>
+        <div class="info-system">
+            <h2>Ventas de Ropa Interior</h2>
+        </div>
+        <div class="menu"> 
+            <a href="/flujo de caja/flujo_de_caja.html" class="menu-item">
+                <img src="/imagenes/flujo.png" alt="Flujo de caja">
+                <span>Flujo de caja</span>
+            </a>
+            <a href="/inventario/inventario.html" class="menu-item">
+                <img src="/imagenes/inventario.png" alt="Inventario">
+                <span>Inventario</span>
+            </a>
+            <a href="/proveedores/proveedores.html" class="menu-item">
+                <img src="/imagenes/proveedores.png" alt="Proveedores">
+                <span>Proveedores</span>
+            </a>
+            <a href="/Cuentas Bancarias/cuentas_de_bancos.html" class="menu-item">
+                <img src="/imagenes/bancos.png" alt="Cuentas Bancarias">
+                <span>Cuentas Bancarias</span>
+            </a>
+            <a href="/Clientes/clientes.html" class="menu-item">
+                <img src="/imagenes/Clientes.png" alt="Clientes">
+                <span>Clientes</span>
+            </a>
+            <a href="/Gastos Del Almacen/gastos_del_almacen.html" class="menu-item">
+                <img src="/imagenes/gastos.png" alt="Gastos">
+                <span>Gastos</span>
+            </a>
+                       <!-- Agrega los enlaces al menú según tu estructura -->
+        </div>
+        <div class="content">
+            <input type="text" id="searchInput" placeholder="Buscar en ventas..." style="margin-bottom: 20px; padding: 10px; width: 80%;">
+            <div class="table-container">
+                <table id="ventasTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Ref...</th>
+                            <th>Valor Unitario</th>
+                            <th>venta</th>
+                            <th>Utilidad</th>
+                            <th>Total dia</th>                                                        
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se llenarán dinámicamente las ventas -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="intventas.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Gastos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tabla de Gastos</h1>
+        </header>
+
+        <div class="menu">
+            <a href="/inicio/inicio.html" class="menu-item">
+                <img src="/imagenes/inicio.png" alt="Inicio">
+                <span>Inicio</span>
+            </a>
+            <a href="/flujo de caja/flujo_de_caja.html" class="menu-item">
+                <img src="/imagenes/flujo.png" alt="Flujo de caja">
+                <span>Flujo de caja</span>
+            </a>
+            <a href="/inventario/inventario.html" class="menu-item">
+                <img src="/imagenes/inventario.png" alt="Inventario">
+                <span>Inventario</span>
+            </a>
+            <a href="/proveedores/proveedores.html" class="menu-item">
+                <img src="/imagenes/proveedores.png" alt="Proveedores">
+                <span>Proveedores</span>
+            </a>
+            <a href="/Cuentas Bancarias/cuentas_de_bancos.html" class="menu-item">
+                <img src="/imagenes/bancos.png" alt="Cuentas Bancarias">
+                <span>Cuentas Bancarias</span>
+            </a>
+            <a href="/Clientes/clientes.html" class="menu-item">
+                <img src="/imagenes/Clientes.png" alt="Clientes">
+                <span>Clientes</span>
+            </a>
+        </div>
+
+        <div class="table-container">
+            <table id="gastosTable">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Gasto</th>
+                        <th>Detalle</th>                        
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se generarán dinámicamente las filas de la tabla -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="buttons">
+            <a href="gastos_del_almacen.html" class="btn-regresar">Regresar</a>
+        </div>
+    </div>
+
+    <script src="tabla_de_gastos.js"></script>
+</body>
+</html>

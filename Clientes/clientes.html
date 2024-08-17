@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="clientes.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Clientes - Pagos Parciales</h1>
+        </header>
+        <div class="menu">
+            <a href="/inicio/inicio.html" class="menu-item">
+                <img src="/imagenes/inicio.png" alt="Inicio">
+                <span>Inicio</span>
+            </a>
+            <a href="/flujo de caja/flujo_de_caja.html" class="menu-item">
+                <img src="/imagenes/flujo.png" alt="Flujo de caja">
+                <span>Flujo de caja</span>
+            </a>
+            <a href="/inventario/inventario.html" class="menu-item">
+                <img src="/imagenes/inventario.png" alt="Inventario">
+                <span>Inventario</span>
+            </a>
+            <a href="/proveedores/proveedores.html" class="menu-item">
+                <img src="/imagenes/proveedores.png" alt="Proveedores">
+                <span>Proveedores</span>
+            </a>
+            <a href="/Cuentas Bancarias/cuentas_de_bancos.html" class="menu-item">
+                <img src="/imagenes/bancos.png" alt="Cuentas Bancarias">
+                <span>Cuentas Bancarias</span>
+            </a>
+
+            <a href="/Gastos Del Almacen/gastos_del_almacen.html" class="menu-item">
+                <img src="/imagenes/gastos.png" alt="Gastos">
+                <span>Gastos</span>
+            </a>
+        </div>
+        <form id="clientesForm">
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" name="numero" required><br><br>
+            
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" name="cliente" required><br><br>
+            
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" required><br><br>
+            
+            <label for="pago">Pago:</label>
+            <input type="number" id="pago" name="pago" required><br><br>
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required><br><br>
+            
+            <button type="submit">Guardar</button>
+        </form>
+    
+        <div class="buttons">
+            <a href="lista_clientes.html" class="clientes-list-link">Lista de Clientes</a>
+        </div>
+    </div>  
+    <script src="clientes.js"></script>
+</body>
+</html>

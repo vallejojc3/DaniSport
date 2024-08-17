@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e6e6fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #e6e6fa;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 95%; /* Aumentar el ancho del contenedor */
+    max-width: 1200px; /* Ajustar el ancho máximo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Añadir margen inferior */
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 20px;
+}
+
+h1 {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #000;
+    margin: 0;
+}
+
+.info-system {
+    background-color: #999;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.info-system h2 {
+    color: #fff;
+    margin: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #4682b4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    background-color: #4682b4;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #5a9bd3;
+}
+
+.menu-item img {
+    width: 30px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.menu-item span {
+    font-size: 14px;
+}
+
+.table-container {
+    overflow-x: auto;
+    max-width: 100%; /* Asegura que no se desborde horizontalmente */
+}
+
+.table-wrapper {
+    max-height: 400px; /* Altura fija para permitir desplazamiento */
+    overflow-y: auto;  /* Desplazamiento vertical */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Fija el ancho de las columnas */
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: left;
+    word-wrap: break-word; /* Permite el ajuste del texto */
+}
+
+th {
+    background-color: #4682b4;
+    color: white;
+}

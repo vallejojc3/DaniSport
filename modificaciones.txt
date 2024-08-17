@@ -1,0 +1,4 @@
+-caja de busqueda clientes fecha
+-modificacion de posiciones de la menra de categoria zapatos
+-porveedores de manera agregada
+-gastos total mensual

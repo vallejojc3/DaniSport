@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastos del Almacén</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gastos del Almacén</h1>
+        </header>
+        <div class="menu">
+            <a href="/inicio/inicio.html" class="menu-item">
+                <img src="/imagenes/inicio.png" alt="Inicio">
+                <span>Inicio</span>
+            </a>
+            <a href="/flujo de caja/flujo_de_caja.html" class="menu-item">
+                <img src="/imagenes/flujo.png" alt="Flujo de caja">
+                <span>Flujo de caja</span>
+            </a>
+            <a href="/inventario/inventario.html" class="menu-item">
+                <img src="/imagenes/inventario.png" alt="Inventario">
+                <span>Inventario</span>
+            </a>
+            <a href="/proveedores/proveedores.html" class="menu-item">
+                <img src="/imagenes/proveedores.png" alt="Proveedores">
+                <span>Proveedores</span>
+            </a>
+            <a href="/Cuentas Bancarias/cuentas_de_bancos.html" class="menu-item">
+                <img src="/imagenes/bancos.png" alt="Cuentas Bancarias">
+                <span>Cuentas Bancarias</span>
+            </a>
+            <a href="/Clientes/clientes.html" class="menu-item">
+                <img src="/imagenes/Clientes.png" alt="Clientes">
+                <span>Clientes</span>
+            </a>
+
+        </div>
+
+
+        <form id="gastosForm">
+            <div class="form-group">
+                <label for="gasto">Gasto:</label>
+                <input type="text" id="gasto" name="gasto" required>
+            </div>
+            <div class="form-group">
+                <label for="detalle">Detalle:</label>
+                <textarea id="detalle" name="detalle" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <button type="submit">Guardar</button>
+        </form>
+        
+        <div class="buttons">
+            <a href="tabla_de_gastos.html" class="btn-lista">Ver Tabla de Gastos</a>
+        </div>
+    </div>
+
+    <script src="gastos_del_almacen.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandalias</title>
+    <link rel="stylesheet" href="zapatos.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/imagenes/shoe.jpg" alt="Logo" class="logo">
+            <h1>Dani Sport</h1>
+        </header>
+        <div class="info-system">
+            <h2>Sandalias</h2>
+        </div>
+        <div class="menu">
+            <a href="/inicio/inicio.html" class="menu-item">
+                <img src="/imagenes/inicio.png" alt="Inicio">
+                <span>Incio</span>            
+            <a href="/flujo de caja/flujo_de_caja.html" class="menu-item">
+                <img src="/imagenes/flujo.png" alt="Flujo de caja">
+                <span>Flujo de caja</span>
+            </a>
+            <a href="/inventario/inventario.html" class="menu-item">
+                <img src="/imagenes/inventario.png" alt="Inventario">
+                <span>Inventario</span>
+            </a>
+            <a href="/proveedores/proveedores.html" class="menu-item">
+                <img src="/imagenes/proveedores.png" alt="Proveedores">
+                <span>Proveedores</span>
+            </a>
+            <a href="/Cuentas Bancarias/cuentas_de_bancos.html" class="menu-item">
+                <img src="/imagenes/bancos.png" alt="Cuentas Bancarias">
+                <span>Cuentas Bancarias</span>
+            </a>
+            <a href="/Clientes/clientes.html" class="menu-item">
+                <img src="/imagenes/Clientes.png" alt="Clientes">
+                <span>Clientes</span>
+            </a>
+            <a href="/Gastos Del Almacen/gastos_del_almacen.html" class="menu-item">
+                <img src="/imagenes/gastos.png" alt="Gastos">
+                <span>Gastos</span>
+            </a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar...">
+        </div>
+        <div class="content">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>NIT</th>
+                            <th>Valor Unitario</th> 
+                            <th>Valor total</th>                                                       
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sandalias-table-body">
+                        <!-- Las filas se agregarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </div>
+            <a href="sventas.html" class="existentes-button">Vendidos</a>
+        </div>
+    </div>
+
+    <div id="editFormContainer" class="edit-form-container" style="display:none;">
+        <form id="editForm">
+            <h2>Editar Sandalia</h2>
+            <label for="editNomProducto">Producto:</label>
+            <input type="text" id="editNomProducto" name="nomProducto" required>
+            <label for="editNit">NIT:</label>
+            <input type="text" id="editNit" name="nit" required>
+            <label for="editValor">Precio:</label>
+            <input type="number" id="editValor" name="valor" required>
+            <label for="editValorUnitario">Valor Unitario:</label>
+            <input type="number" id="editValorUnitario" name="valorUnitario" step="0.01" required>
+            <label for="editCantidad">Cantidad:</label>
+            <input type="number" id="editCantidad" name="cantidad" required>
+            <button type="submit">Guardar Cambios</button>
+            <button type="button" onclick="cerrarFormularioEdicion()">Cancelar</button>
+        </form>
+    </div>
+
+    <script src="sandalias.js"></script>
+</body>
+</html>

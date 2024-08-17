@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra</title>
+    <link rel="stylesheet" href="compras.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/imagenes/shoe.jpg" alt="Logo" class="logo">
+            <h1>Dani Sport</h1>
+        </header>
+        <div class="info-system">
+            <h2>Compra</h2>
+        </div>
+        <div class="menu">
+            <a href="/inicio/inicio.html" class="menu-item">
+                <img src="/imagenes/inicio.png" alt="Inicio">
+                <span>Inicio</span>
+            </a>
+            <a href="/flujo de caja/flujo_de_caja.html" class="menu-item">
+                <img src="/imagenes/flujo.png" alt="Flujo de caja">
+                <span>Flujo de caja</span>
+            </a>
+            <a href="/inventario/inventario.html" class="menu-item">
+                <img src="/imagenes/inventario.png" alt="Inventario">
+                <span>Inventario</span>
+            </a>
+            <a href="/proveedores/proveedores.html" class="menu-item">
+                <img src="/imagenes/proveedores.png" alt="Proveedores">
+                <span>Proveedores</span>
+            </a>
+            <a href="/Cuentas Bancarias/cuentas_de_bancos.html" class="menu-item">
+                <img src="/imagenes/bancos.png" alt="Cuentas Bancarias">
+                <span>Cuentas Bancarias</span>
+            </a>
+            <a href="/Clientes/clientes.html" class="menu-item">
+                <img src="/imagenes/Clientes.png" alt="Clientes">
+                <span>Clientes</span>
+            </a>
+            <a href="/Gastos Del Almacen/gastos_del_almacen.html" class="menu-item">
+                <img src="/imagenes/gastos.png" alt="Gastos">
+                <span>Gastos</span>
+            </a>
+        </div>
+        <div class="form">
+            <label for="nit">Referencia</label>
+            <input type="text" id="nit" name="nit">
+
+            <label for="nomproducto">Nom Producto</label>
+            <input type="text" id="nomproducto" name="nomproducto">
+            
+            <label for="proveedor">Proveedor</label>
+            <select id="proveedor" name="proveedor">
+                <option value="proveedor1">Proveedor1</option>
+                <option value="proveedor2">Proveedor2</option>
+                <option value="proveedor3">Proveedor3</option>
+                <option value="proveedor4">Proveedor4</option>
+                <option value="proveedor5">Proveedor5</option>
+                <option value="proveedor6">Proveedor6</option>
+                <option value="proveedor7">Proveedor7</option>
+                <option value="proveedor8">Proveedor8</option>
+                <option value="proveedor9">Proveedor9</option>
+                <option value="proveedor10">Proveedor10</option>
+                <option value="proveedor11">Proveedor11</option>
+                <option value="proveedor12">Proveedor12</option>
+                <option value="proveedor13">Proveedor13</option>
+                <option value="proveedor14">Proveedor14</option>
+                <option value="proveedor15">Proveedor15</option>
+                <option value="proveedor16">Proveedor16</option>
+            </select>
+            
+            <label for="valor">Valor</label>
+            <input type="text" id="valor" name="valor">
+            
+            <label for="cancelado">Cancelado</label>
+            <input type="text" id="cancelado" name="cancelado">
+            
+            <label for="cantidad">Cantidad de productos</label>
+            <input type="text" id="cantidad" name="cantidad">
+            
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" name="fecha">
+            
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria">
+                <option value="zapatos">Zapatos</option>
+                <option value="sandalias">Sandalias</option>
+                <option value="ropa_interior">Ropa Interior</option>
+                <option value="pijamas">Pijamas</option>
+                <option value="ropa">Ropa</option>
+            </select>
+            
+            <button type="button" onclick="guardarDatos()">Confirmar</button>
+        </div>
+    </div>
+
+    <script src="compras.js"></script>
+</body>
+</html>

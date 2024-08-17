@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedor 4</title>
+    <link rel="stylesheet" href="/proveedores/proveedor1.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/imagenes/shoe.jpg" alt="Logo" class="logo">
+            <h1>Dani Sport</h1>
+        </header>
+        <div class="info-system">
+            <h2>Proveedor 4</h2>
+        </div>
+        <div class="menu">
+            <a href="/flujo de caja/flujo_de_caja.html" class="menu-item">
+                <img src="/imagenes/flujo.png" alt="Flujo de caja">
+                <span>Flujo de caja</span>
+            </a>
+            <a href="/inventario/inventario.html" class="menu-item">
+                <img src="/imagenes/inventario.png" alt="Inventario">
+                <span>Inventario</span>
+            </a>
+            <a href="/proveedores/proveedores.html" class="menu-item">
+                <img src="/imagenes/proveedores.png" alt="Proveedores">
+                <span>Proveedores</span>
+            </a>
+            <a href="/Cuentas Bancarias/cuentas_de_bancos.html" class="menu-item">
+                <img src="/imagenes/bancos.png" alt="Cuentas Bancarias">
+                <span>Cuentas Bancarias</span>
+            </a>
+        </div>
+        <div class="content">
+            <input type="text" id="searchInput" placeholder="Buscar en proveedores..." style="margin-bottom: 20px; padding: 10px; width: 80%;">
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Referencia</th>
+                                <th>Nom Producto</th>
+                                <th>Nombre</th>
+                                <th>Valor</th>
+                                <th>Cancelado</th>
+                                <th>Valor Unitario</th>
+                                <th>Cantidad</th>
+                                <th>Categoría</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-proveedor4">
+                            <!-- Filas de datos se agregarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const datos = JSON.parse(localStorage.getItem('proveedor4')) || [];
+            const tabla = document.getElementById('tabla-proveedor4');
+            const searchInput = document.getElementById('searchInput');
+
+            function displayDatos(filteredDatos) {
+                tabla.innerHTML = '';
+
+                filteredDatos.forEach(dato => {
+                    const fila = document.createElement('tr');
+                    for (const key in dato) {
+                        const celda = document.createElement('td');
+                        // Formatear el valor unitario con dos decimales
+                        if (key === 'valorUnitario') {
+                            celda.textContent = parseFloat(dato[key]).toFixed(2);
+                        } else {
+                            celda.textContent = dato[key];
+                        }
+                        fila.appendChild(celda);
+                    }
+                    tabla.appendChild(fila);
+                });
+            }
+
+            function filterDatos() {
+                const query = searchInput.value.toLowerCase();
+                const filteredDatos = datos.filter(dato => {
+                    return Object.values(dato).some(value =>
+                        value.toString().toLowerCase().includes(query)
+                    );
+                });
+                displayDatos(filteredDatos);
+            }
+
+            searchInput.addEventListener('input', filterDatos);
+
+            displayDatos(datos);
+
+            if (datos.length === 0) {
+                alert('No hay datos de proveedor disponibles.');
+            }
+        });
+    </script>
+</body>
+</html>
