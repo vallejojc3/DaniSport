@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', actualizarTablaSandalias);
 
     actualizarTablaSandalias();
-});
+}); 
 
 function actualizarTablaSandalias() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
@@ -97,4 +97,57 @@ function guardarCambiosEdicion(index) {
 function cerrarFormularioEdicion() {
     const formContainer = document.getElementById('editFormContainer');
     formContainer.style.display = 'none';
+}
+function actualizarTablaSandalias() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const sandaliasData = obtenerDatosSandalias();
+    const tableBody = document.getElementById('sandalias-table-body');
+
+    tableBody.innerHTML = '';  // Limpiar la tabla
+
+    const fragment = document.createDocumentFragment();  // Fragmento para evitar reflujo del DOM
+
+    const productosFiltrados = sandaliasData.filter(function(sandalia) {
+        return sandalia.cantidad > 0 &&
+            (sandalia.nomProducto.toLowerCase().includes(searchTerm) || 
+             sandalia.nit.toLowerCase().includes(searchTerm) ||
+             sandalia.valor.toString().includes(searchTerm));
+    });
+
+    productosFiltrados.forEach(function(sandalia, index) {
+        const row = document.createElement('tr');
+
+        const nomProductoCell = document.createElement('td');
+        nomProductoCell.textContent = sandalia.nomProducto;
+        row.appendChild(nomProductoCell);
+
+        const cantidadCell = document.createElement('td');
+        cantidadCell.textContent = sandalia.cantidad;
+        row.appendChild(cantidadCell);
+
+        const nitCell = document.createElement('td');
+        nitCell.textContent = sandalia.nit;
+        row.appendChild(nitCell);
+
+        const valorUnitarioCell = document.createElement('td');
+        valorUnitarioCell.textContent = sandalia.valorUnitario ? sandalia.valorUnitario.toFixed(2) : 'N/A';
+        row.appendChild(valorUnitarioCell);
+
+        const valorTotalCell = document.createElement('td');
+        valorTotalCell.textContent = (sandalia.valorUnitario * sandalia.cantidad).toFixed(2);
+        row.appendChild(valorTotalCell);
+
+        const accionesCell = document.createElement('td');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar';
+        editButton.onclick = function() {
+            mostrarFormularioEdicion(index);
+        };
+        accionesCell.appendChild(editButton);
+        row.appendChild(accionesCell);
+
+        fragment.appendChild(row);  // Añadir la fila al fragmento
+    });
+
+    tableBody.appendChild(fragment);  // Añadir todo el fragmento al DOM de una vez
 }

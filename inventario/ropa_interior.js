@@ -88,3 +88,14 @@ function guardarCambios(row, interior, index) {
     localStorage.setItem('ropa_interior', JSON.stringify(interiorData));
     actualizarTablaInterior();
 }
+document.getElementById('totalInventarioBtn').addEventListener('click', function() {
+    const interiorData = JSON.parse(localStorage.getItem('ropa_interior')) || [];
+    let totalInventario = 0;
+
+    interiorData.forEach(function(interior) {
+        const valorTotal = interior.valorUnitario * interior.cantidad;
+        totalInventario += valorTotal;
+    });
+
+    alert("El total del inventario es: " + totalInventario.toFixed(2));
+});

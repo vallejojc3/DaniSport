@@ -100,4 +100,21 @@ function cerrarFormularioEdicion() {
     const formContainer = document.getElementById('editFormContainer');
     formContainer.style.display = 'none';
 }
- 
+
+// Función para mostrar el total del inventario
+function mostrarTotalInventario() {
+    const zapatosData = JSON.parse(localStorage.getItem('zapatos')) || [];
+    let totalInventario = 0;
+
+    zapatosData.forEach(function(zapato) {
+        // Verificar que valorUnitario y cantidad sean números válidos
+        const valorUnitario = parseFloat(zapato.valorUnitario);
+        const cantidad = parseInt(zapato.cantidad);
+
+        if (!isNaN(valorUnitario) && !isNaN(cantidad)) {
+            totalInventario += valorUnitario * cantidad;
+        }
+    });
+
+    alert('El total del inventario es: ' + totalInventario.toFixed(2));
+}

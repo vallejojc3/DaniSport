@@ -103,3 +103,15 @@ function cerrarFormularioEdicion() {
     const formContainer = document.getElementById('editFormContainer');
     formContainer.style.display = 'none';
 }
+ 
+document.getElementById('totalInventarioBtn').addEventListener('click', function() {
+    const pijamasData = JSON.parse(localStorage.getItem('pijamas')) || [];
+    let totalInventario = 0;
+
+    pijamasData.forEach(function(pijama) {
+        const valorTotal = pijama.valorUnitario * pijama.cantidad;
+        totalInventario += valorTotal;
+    });
+
+    alert("El total del inventario es: " + totalInventario.toFixed(2));
+});

@@ -23,7 +23,7 @@ function actualizarTablaRopa() {
             ropa.cantidad.toString().toLowerCase().includes(searchTerm)
         );
     });
-
+ 
     productosFiltrados.forEach(function(ropa, index) {
         const row = document.createElement('tr');
 
@@ -102,4 +102,14 @@ function cerrarFormularioEdicion() {
     const formContainer = document.getElementById('editFormContainer');
     formContainer.style.display = 'none';
 }
- 
+document.getElementById('totalInventarioBtn').addEventListener('click', function() {
+    const ropaData = JSON.parse(localStorage.getItem('ropa')) || [];
+    let totalInventario = 0;
+
+    ropaData.forEach(function(ropa) {
+        const valorTotal = ropa.valorUnitario * ropa.cantidad;
+        totalInventario += valorTotal;
+    });
+
+    alert("El total del inventario es: " + totalInventario.toFixed(2));
+});
