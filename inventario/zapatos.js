@@ -12,7 +12,7 @@ function actualizarTablaZapatos() {
 
     // Limpiar el contenido existente de la tabla
     tableBody.innerHTML = '';
-
+ 
     // Filtrar los productos con cantidad mayor que 0 y que coincidan con la búsqueda
     const productosFiltrados = zapatosData.filter(function(zapato) {
         return zapato.cantidad > 0 &&

@@ -3,22 +3,25 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', actualizarTablaSandalias);
 
     actualizarTablaSandalias();
-}); 
+});
 
 function actualizarTablaSandalias() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const sandaliasData = JSON.parse(localStorage.getItem('sandalias')) || [];
     const tableBody = document.getElementById('sandalias-table-body');
 
-    // Limpiar el contenido existente de la tabla
-    tableBody.innerHTML = '';
+    tableBody.innerHTML = '';  // Limpiar el contenido existente de la tabla
 
-    // Filtrar los productos con cantidad mayor que 0
+    // Fragmento de documento para evitar reflujo del DOM
+    const fragment = document.createDocumentFragment();
+
+    // Filtrar los productos con cantidad mayor que 0 y que coincidan con la búsqueda
     const productosFiltrados = sandaliasData.filter(function(sandalia) {
         return sandalia.cantidad > 0 &&
             (sandalia.nomProducto.toLowerCase().includes(searchTerm) || 
              sandalia.nit.toLowerCase().includes(searchTerm) ||
-             sandalia.valor.toString().toLowerCase().includes(searchTerm));
+             sandalia.valor.toString().toLowerCase().includes(searchTerm) ||
+             (sandalia.detalle && sandalia.detalle.toLowerCase().includes(searchTerm)));
     });
 
     productosFiltrados.forEach(function(sandalia, index) {
@@ -40,10 +43,11 @@ function actualizarTablaSandalias() {
         valorUnitarioCell.textContent = sandalia.valorUnitario ? sandalia.valorUnitario.toFixed(2) : 'N/A';
         row.appendChild(valorUnitarioCell);
 
+        const valorTotal = sandalia.valorUnitario * sandalia.cantidad;
         const valorTotalCell = document.createElement('td');
-        valorTotalCell.textContent = (sandalia.valorUnitario * sandalia.cantidad).toFixed(2);
+        valorTotalCell.textContent = valorTotal.toFixed(2);
         row.appendChild(valorTotalCell);
-       
+
         const accionesCell = document.createElement('td');
         const editButton = document.createElement('button');
         editButton.textContent = 'Editar';
@@ -53,8 +57,10 @@ function actualizarTablaSandalias() {
         accionesCell.appendChild(editButton);
         row.appendChild(accionesCell);
 
-        tableBody.appendChild(row);
+        fragment.appendChild(row);
     });
+
+    tableBody.appendChild(fragment);  // Añadir todo el fragmento al DOM de una vez
 }
 
 function mostrarFormularioEdicion(index) {
@@ -98,56 +104,20 @@ function cerrarFormularioEdicion() {
     const formContainer = document.getElementById('editFormContainer');
     formContainer.style.display = 'none';
 }
-function actualizarTablaSandalias() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const sandaliasData = obtenerDatosSandalias();
-    const tableBody = document.getElementById('sandalias-table-body');
 
-    tableBody.innerHTML = '';  // Limpiar la tabla
+// Función para mostrar el total del inventario
+function mostrarTotalInventario() {
+    const sandaliasData = JSON.parse(localStorage.getItem('sandalias')) || [];
+    let totalInventario = 0;
 
-    const fragment = document.createDocumentFragment();  // Fragmento para evitar reflujo del DOM
+    sandaliasData.forEach(function(sandalia) {
+        const valorUnitario = parseFloat(sandalia.valorUnitario);
+        const cantidad = parseInt(sandalia.cantidad);
 
-    const productosFiltrados = sandaliasData.filter(function(sandalia) {
-        return sandalia.cantidad > 0 &&
-            (sandalia.nomProducto.toLowerCase().includes(searchTerm) || 
-             sandalia.nit.toLowerCase().includes(searchTerm) ||
-             sandalia.valor.toString().includes(searchTerm));
+        if (!isNaN(valorUnitario) && !isNaN(cantidad)) {
+            totalInventario += valorUnitario * cantidad;
+        }
     });
 
-    productosFiltrados.forEach(function(sandalia, index) {
-        const row = document.createElement('tr');
-
-        const nomProductoCell = document.createElement('td');
-        nomProductoCell.textContent = sandalia.nomProducto;
-        row.appendChild(nomProductoCell);
-
-        const cantidadCell = document.createElement('td');
-        cantidadCell.textContent = sandalia.cantidad;
-        row.appendChild(cantidadCell);
-
-        const nitCell = document.createElement('td');
-        nitCell.textContent = sandalia.nit;
-        row.appendChild(nitCell);
-
-        const valorUnitarioCell = document.createElement('td');
-        valorUnitarioCell.textContent = sandalia.valorUnitario ? sandalia.valorUnitario.toFixed(2) : 'N/A';
-        row.appendChild(valorUnitarioCell);
-
-        const valorTotalCell = document.createElement('td');
-        valorTotalCell.textContent = (sandalia.valorUnitario * sandalia.cantidad).toFixed(2);
-        row.appendChild(valorTotalCell);
-
-        const accionesCell = document.createElement('td');
-        const editButton = document.createElement('button');
-        editButton.textContent = 'Editar';
-        editButton.onclick = function() {
-            mostrarFormularioEdicion(index);
-        };
-        accionesCell.appendChild(editButton);
-        row.appendChild(accionesCell);
-
-        fragment.appendChild(row);  // Añadir la fila al fragmento
-    });
-
-    tableBody.appendChild(fragment);  // Añadir todo el fragmento al DOM de una vez
+    alert('El total del inventario es: ' + totalInventario.toFixed(2));
 }

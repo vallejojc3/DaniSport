@@ -13,7 +13,7 @@ function guardarDatos() {
     if (isNaN(valor) || isNaN(cancelado) || isNaN(cantidad)) {
         alert('Por favor, ingrese valores numéricos para Valor, Cancelado y Cantidad.');
         return;
-    }
+    } 
 
     // Calcular el valor unitario
     const valorUnitario = valor / cantidad;
