@@ -1,12 +1,12 @@
 @echo off
-rem Cambia al directorio donde está el script
-cd /d %~dp0
+REM Cambia al directorio donde se encuentra tu proyecto
+cd "D:\Biblioteca de Windows\Escritorio\Universidad\Github\DaniSport-master"
 
-rem Inicia un servidor HTTP en el puerto 8000
-start "" "python" -m http.server 8000
+REM Inicia Live Server (asegúrate de que Live Server esté instalado globalmente)
+start "" live-server
 
-rem Espera unos segundos para asegurarse de que el servidor ha arrancado
-timeout /t 3 > nul
+REM Espera un poco para que el servidor se inicie
+timeout /t 5
 
-rem Abre el navegador predeterminado apuntando a la aplicación
-start "" "http://localhost:8000/Login/login.html"
+REM Abre la URL en el navegador predeterminado
+start http://127.0.0.1:8080/Login/login.html

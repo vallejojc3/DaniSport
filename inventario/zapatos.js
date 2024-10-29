@@ -52,6 +52,13 @@ function actualizarTablaZapatos() {
         editButton.onclick = function() {
             mostrarFormularioEdicion(index);
         };
+        const eliminarButton = document.createElement('button');
+        eliminarButton.textContent = 'Eliminar';
+        eliminarButton.onclick = function() {
+        eliminarProducto(index);
+        };
+        accionesCell.appendChild(eliminarButton);
+
         accionesCell.appendChild(editButton);
         row.appendChild(accionesCell);
 
@@ -101,6 +108,13 @@ function cerrarFormularioEdicion() {
     formContainer.style.display = 'none';
 }
 
+function eliminarProducto(index) {
+    const zapatosData = JSON.parse(localStorage.getItem('zapatos')) || [];
+    zapatosData.splice(index, 1); // Remueve el producto del array
+    localStorage.setItem('zapatos', JSON.stringify(zapatosData)); // Guarda el array actualizado
+    actualizarTablaZapatos(); // Actualiza la tabla
+}
+
 // Función para mostrar el total del inventario
 function mostrarTotalInventario() {
     const zapatosData = JSON.parse(localStorage.getItem('zapatos')) || [];
@@ -118,3 +132,4 @@ function mostrarTotalInventario() {
 
     alert('El total del inventario es: ' + totalInventario.toFixed(2));
 }
+
