@@ -128,7 +128,36 @@ th {
     color: #fff;
 }
 
-.vendidos-button {
+/* Estilos para los botones de edición y eliminación */
+button {
+    width: 60px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1e5f99;
+}
+
+/* Botón Editar */
+button:nth-child(1) {
+    background-color: #4682b4;
+    margin-right: 10px;
+}
+
+/* Botón Eliminar */
+button:nth-child(2) {
+    background-color: #5a9bd3;
+}
+
+
+.existentes-button {
     background-color: #4682b4;
     color: #fff;
     border: none;
@@ -137,8 +166,30 @@ th {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin-bottom: 2px; /* Espacio de 1 píxel debajo de este botón */
 }
 
-.vendidos-button:hover {
-    background-color: #5a9bd3;
+.content > button:nth-child(4) {
+    background-color: #4682b4;
+    width: 90px;
+    height: 50px;
+    margin-right: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.content > button:nth-child(3) {
+    background-color: #4682b4;
+    width: 90px;
+    height: 50px;
+    margin-right: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }

@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const cellNit = row.insertCell(3);
             const cellValorUnitario = row.insertCell(4); // Nueva celda Valor Unitario
             const cellPrecio = row.insertCell(5);
-                        
             const cellUtilidad = row.insertCell(6); // Nueva celda Utilidad
             const cellTotal = row.insertCell(7); // Nueva celda Total
             const cellAcciones = row.insertCell(8); // Nueva celda para Acciones
@@ -59,10 +58,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // Añadir botón de editar
             const editButton = document.createElement('button');
             editButton.textContent = 'Editar';
+            editButton.classList.add('edit-btn'); // Agregar clase CSS
             editButton.addEventListener('click', function() {
                 editVenta(index);
             });
             cellAcciones.appendChild(editButton);
+
+            // Añadir botón de eliminar
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.classList.add('delete-btn'); // Agregar clase CSS
+            deleteButton.addEventListener('click', function() {
+                deleteVenta(index);
+            });
+            cellAcciones.appendChild(deleteButton);
         });
     }
 
@@ -96,6 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             localStorage.setItem('ventasInterior', JSON.stringify(ventasInterior));
             displayVentas(ventasInterior);
+        }
+    }
+
+    function deleteVenta(index) {
+        if (confirm('¿Estás seguro de que deseas eliminar esta venta?')) {
+            ventasInterior.splice(index, 1); // Eliminar la venta del array
+            localStorage.setItem('ventasInterior', JSON.stringify(ventasInterior)); // Actualizar localStorage
+            displayVentas(ventasInterior); // Re-renderizar la tabla
         }
     }
 

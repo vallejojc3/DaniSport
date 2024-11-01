@@ -17,7 +17,7 @@ body {
     border: 2px solid #000;
     border-radius: 10px;
     width: 90%;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 20px 0;
 }
 
@@ -119,4 +119,31 @@ th {
 
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+/* Estilos para los botones de edición y eliminación */
+button {
+    width: 60px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1e5f99;
+}
+
+/* Botón Editar */
+button:nth-child(1) {
+    background-color: #4682b4;
+    margin-right: 10px;
+}
+
+/* Botón Eliminar */
+button:nth-child(2) {
+    background-color: #5a9bd3;
 }

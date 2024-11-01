@@ -52,6 +52,13 @@ function actualizarTablaInterior() {
             editarFila(row, interior, index);
         });
         accionesCell.appendChild(editarButton);
+        const eliminarButton = document.createElement('button');
+        eliminarButton.textContent = 'Eliminar';
+        eliminarButton.onclick = function() {
+            eliminarProducto(index);
+        };
+        accionesCell.appendChild(eliminarButton);
+
         row.appendChild(accionesCell);
 
         tableBody.appendChild(row);
@@ -88,6 +95,14 @@ function guardarCambios(row, interior, index) {
     localStorage.setItem('ropa_interior', JSON.stringify(interiorData));
     actualizarTablaInterior();
 }
+
+function eliminarProducto(index) {
+    const interiorData = JSON.parse(localStorage.getItem('ropa_interior')) || [];
+    interiorData.splice(index, 1); // Remueve el producto del array
+    localStorage.setItem('ropa_interior', JSON.stringify(interiorData)); // Guarda el array actualizado
+    actualizarTablaInterior(); // Actualiza la tabla
+}
+
 document.getElementById('totalInventarioBtn').addEventListener('click', function() {
     const interiorData = JSON.parse(localStorage.getItem('ropa_interior')) || [];
     let totalInventario = 0;

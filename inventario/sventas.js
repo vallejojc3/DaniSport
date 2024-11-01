@@ -16,12 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const cellProducto = row.insertCell(1);
             const cellCantidad = row.insertCell(2);
             const cellNit = row.insertCell(3);
-            const cellValorUnitario = row.insertCell(4); // Nueva celda Valor Unitario
+            const cellValorUnitario = row.insertCell(4);
             const cellPrecio = row.insertCell(5);          
-            const cellUtilidad = row.insertCell(6); // Nueva celda Utilidad   
-            const cellTotal = row.insertCell(7); // Nueva celda Total
-                       
-            const cellAcciones = row.insertCell(8); // Nueva celda para Acciones
+            const cellUtilidad = row.insertCell(6);
+            const cellTotal = row.insertCell(7);
+            const cellAcciones = row.insertCell(8);
 
             cellProducto.textContent = venta.producto;
             cellNit.textContent = venta.nit;
@@ -56,13 +55,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 cellUtilidad.textContent = 'N/A';
             }
 
-            // Añadir botón de editar
+            // Botón de Editar
             const editButton = document.createElement('button');
             editButton.textContent = 'Editar';
             editButton.addEventListener('click', function() {
                 editVenta(index);
             });
             cellAcciones.appendChild(editButton);
+
+            // Botón de Eliminar
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.style.marginLeft = '10px'; // Espacio entre los botones
+            deleteButton.addEventListener('click', function() {
+                deleteVenta(index);
+            });
+            cellAcciones.appendChild(deleteButton);
         });
     }
 
@@ -96,6 +104,14 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             localStorage.setItem('ventasSandalias', JSON.stringify(ventasSandalias));
             displayVentas(ventasSandalias);
+        }
+    }
+
+    function deleteVenta(index) {
+        if (confirm('¿Estás seguro de que deseas eliminar esta venta?')) {
+            ventasSandalias.splice(index, 1);  // Elimina la venta del array
+            localStorage.setItem('ventasSandalias', JSON.stringify(ventasSandalias)); // Actualiza el localStorage
+            displayVentas(ventasSandalias); // Refresca la tabla
         }
     }
 

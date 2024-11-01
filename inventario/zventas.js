@@ -16,18 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const cellProducto = row.insertCell(1);
             const cellCantidad = row.insertCell(2);
             const cellNit = row.insertCell(3);
-            const cellValorUnitario = row.insertCell(4); // Nueva celda Valor Unitario
+            const cellValorUnitario = row.insertCell(4);
             const cellPrecio = row.insertCell(5);            
-            const cellUtilidad = row.insertCell(6); // Nueva celda Utilidad
-            const cellTotal = row.insertCell(7); // Nueva celda Total
-            
-            const cellAcciones = row.insertCell(8); // Nueva celda para Acciones
+            const cellUtilidad = row.insertCell(6); 
+            const cellTotal = row.insertCell(7); 
+            const cellAcciones = row.insertCell(8); 
 
             cellProducto.textContent = venta.producto;
             cellCantidad.textContent = venta.cantidad;
             cellNit.textContent = venta.nit;
             cellPrecio.textContent = venta.precio;
-            
             cellFecha.textContent = venta.fecha;
 
             // Calcular el valor unitario basado en los datos de proveedores
@@ -57,13 +55,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 cellUtilidad.textContent = 'N/A';
             }
 
-            // Añadir botón de editar
+            // Botón de Editar
             const editButton = document.createElement('button');
             editButton.textContent = 'Editar';
             editButton.addEventListener('click', function() {
                 editVenta(index);
             });
             cellAcciones.appendChild(editButton);
+
+            // Botón de Eliminar
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.style.marginLeft = '10px'; // Espacio entre los botones
+            deleteButton.addEventListener('click', function() {
+                deleteVenta(index);
+            });
+            cellAcciones.appendChild(deleteButton);
         });
     }
 
@@ -85,9 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const newProducto = prompt('Editar Producto:', venta.producto);
         const newNit = prompt('Editar NIT:', venta.nit);
         const newPrecio = prompt('Editar Precio:', venta.precio);
-        const newValorUnitario = prompt('Editar Valor Unitario:', venta.valorUnitario);
         const newCantidad = prompt('Editar Cantidad:', venta.cantidad);
-        
 
         if (newFecha && newProducto && newNit && newPrecio && newCantidad) {
             ventasZapatos[index] = {
@@ -99,6 +104,14 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             localStorage.setItem('ventasZapatos', JSON.stringify(ventasZapatos));
             displayVentas(ventasZapatos);
+        }
+    }
+
+    function deleteVenta(index) {
+        if (confirm('¿Estás seguro de que deseas eliminar esta venta?')) {
+            ventasZapatos.splice(index, 1);  // Elimina el elemento del array
+            localStorage.setItem('ventasZapatos', JSON.stringify(ventasZapatos)); // Actualiza el localStorage
+            displayVentas(ventasZapatos); // Actualiza la tabla en pantalla
         }
     }
 

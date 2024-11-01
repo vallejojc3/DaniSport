@@ -55,6 +55,13 @@ function actualizarTablaSandalias() {
             mostrarFormularioEdicion(index);
         };
         accionesCell.appendChild(editButton);
+        const eliminarButton = document.createElement('button');
+        eliminarButton.textContent = 'Eliminar';
+        eliminarButton.onclick = function() {
+            eliminarProducto(index);
+        };
+        accionesCell.appendChild(eliminarButton);
+
         row.appendChild(accionesCell);
 
         fragment.appendChild(row);
@@ -82,6 +89,13 @@ function mostrarFormularioEdicion(index) {
         guardarCambiosEdicion(index);
     };
 }
+function eliminarProducto(index) {
+    const sandaliasData = JSON.parse(localStorage.getItem('sandalias')) || [];
+    sandaliasData.splice(index, 1); // Remueve el producto del array
+    localStorage.setItem('sandalias', JSON.stringify(sandaliasData)); // Guarda el array actualizado
+    actualizarTablaSandalias(); // Actualiza la tabla
+}
+
 
 function guardarCambiosEdicion(index) {
     const sandaliasData = JSON.parse(localStorage.getItem('sandalias')) || [];

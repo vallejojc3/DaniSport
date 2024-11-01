@@ -54,6 +54,13 @@ function actualizarTablaRopa() {
         editarButton.addEventListener('click', function() {
             editarRopa(index);
         });
+        const eliminarButton = document.createElement('button');
+        eliminarButton.textContent = 'Eliminar';
+        eliminarButton.onclick = function() {
+            eliminarProducto(index);
+        };
+        accionesCell.appendChild(eliminarButton);
+
         accionesCell.appendChild(editarButton);
         row.appendChild(accionesCell);
 
@@ -97,6 +104,14 @@ function guardarCambiosEdicion(index) {
     cerrarFormularioEdicion();
     actualizarTablaRopa();
 }
+
+function eliminarProducto(index) {
+    const ropaData = JSON.parse(localStorage.getItem('ropa')) || [];
+    ropaData.splice(index, 1); // Remueve el producto del array
+    localStorage.setItem('ropa', JSON.stringify(ropaData)); // Guarda el array actualizado
+    actualizarTablaRopa(); // Actualiza la tabla
+}
+
 
 function cerrarFormularioEdicion() {
     const formContainer = document.getElementById('editFormContainer');

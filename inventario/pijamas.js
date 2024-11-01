@@ -56,6 +56,14 @@ function actualizarTablaPijamas() {
             mostrarFormularioEdicion(index);
         };
         accionesCell.appendChild(editButton);
+
+        const eliminarButton = document.createElement('button');
+        eliminarButton.textContent = 'Eliminar';
+        eliminarButton.onclick = function() {
+            eliminarProducto(index);
+        };
+        accionesCell.appendChild(eliminarButton);
+
         row.appendChild(accionesCell);
 
         tableBody.appendChild(row);
@@ -103,6 +111,14 @@ function cerrarFormularioEdicion() {
     const formContainer = document.getElementById('editFormContainer');
     formContainer.style.display = 'none';
 }
+
+function eliminarProducto(index) {
+    const pijamaData = JSON.parse(localStorage.getItem('pijamas')) || [];
+    pijamaData.splice(index, 1); // Remueve el producto del array
+    localStorage.setItem('pijamas', JSON.stringify(pijamaData)); // Guarda el array actualizado
+    actualizarTablaPijamas(); // Actualiza la tabla
+}
+
  
 document.getElementById('totalInventarioBtn').addEventListener('click', function() {
     const pijamasData = JSON.parse(localStorage.getItem('pijamas')) || [];
